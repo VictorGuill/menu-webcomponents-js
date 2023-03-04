@@ -87,9 +87,13 @@ h1 span {
   padding: 0 10px;
 }
 
-#ticket-container {
+client-ticket {
   width: 45%;
   height: 100%;
+  border: 1px solid var(--cBlack);
+  border-radius: 8px;
+  margin: 15px 10px 10px 0px;
+  align-self: flex-start;
 }
 
 @media (max-width: 920px) {
