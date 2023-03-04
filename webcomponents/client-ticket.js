@@ -8,24 +8,25 @@ class ClientTicket extends HTMLElement {
     this.render();
   }
 
-  //   connectedCallback() {}
+  connectedCallback() {
+    this.shadowRoot.querySelector("button").onclick = () =>
+      alert(this.precioElement.textContent);
+  }
 
   static get observedAttributes() {
     return ["precio"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log(name, newValue);
     switch (name) {
       case "precio":
-        this.precioElement.textContent = "PAGAR: " + newValue + "€" || "";
+        this.precioElement.textContent = "Total: " + newValue + "€" || "";
         break;
     }
   }
 
   render() {
-    this.shadowRoot.innerHTML =
-      `
+    this.shadowRoot.innerHTML = `
         <style>
         * {
             margin: 0;
@@ -42,7 +43,7 @@ class ClientTicket extends HTMLElement {
             flex-direction:column;
           }
 
-          p:nth-child(1){
+          h4{
             font-size: 2rem;
             color:white;
             background-color: black;
@@ -52,20 +53,40 @@ class ClientTicket extends HTMLElement {
 
           button{
             font-size: 1.4rem;
-            width:90%;
+            width: calc(100% - 20px);
             height:70px;
             cursor:pointer;
+            border:none;
             border-radius:8px;
             margin-bottom:10px;
+            background: #242444;
+            color:white;
+            font-weight: 500;
+            transition: transform 0.1s ease-int-out;
           }
-        </style>
+
+          button:hover{
+            border: 3px solid #242444;
+            background: none;
+            color: #242444;
+            font-weight: 700;
+          }
+
+          button:active{
+            transform: scale(0.95);
+          }
+
+          section {
+            min-height: 10px;
+            width: calc(100% - 20px);
+          }
+            </style>
 
         <div>
-         <p>TICKET</p>
+         <h4>TICKET</h4>
         
-      ` +
-      `
-      <p>TICKET</p>
+         <section>
+         </section>
       
         <button>${this.precio}</button>
       </div>

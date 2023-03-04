@@ -7,6 +7,7 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 body {
@@ -74,7 +75,7 @@ h1 span {
 #commanda-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   width: 100%;
   border: 1px solid var(--cBlack);
@@ -97,10 +98,33 @@ client-ticket {
 }
 
 @media (max-width: 920px) {
+  #commanda-container {
+    flex-direction: column;
+  }
   #plats-container {
     width: 100%;
   }
-  #ticket-container {
-    width: 0%;
+  client-ticket {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  #container {
+    padding: 0;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h1 span {
+    font-size: 2rem;
+  }
+  #navigation ul li {
+    margin-right: 0px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    width: calc(100% - 20px);
   }
 }
